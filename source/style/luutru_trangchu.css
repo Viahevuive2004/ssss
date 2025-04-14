@@ -1,0 +1,288 @@
+/* ... (Các phần CSS khác giữ nguyên) ... */
+
+/* --- Hero Section Styles --- */
+.hero-content h2 {
+    /* Giữ lại hoặc điều chỉnh style cho tiêu đề này nếu cần */
+    font-size: 1.5em; /* Điều chỉnh cỡ chữ nếu cần */
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: bold; 
+    /* Có thể cần bỏ text-transform: uppercase; nếu có từ code trước */
+}
+
+.hero-content p {
+    /* Giữ lại hoặc điều chỉnh style cho đoạn văn */
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Style cho link "Đặt lịch tư vấn ngay" dạng văn bản */
+.hero-action-link {
+    color: #007bff; /* Màu xanh dương cho link */
+    font-weight: bold;
+    text-decoration: none; /* Bỏ gạch chân mặc định */
+    display: inline-block; /* Để có thể set margin/padding nếu cần */
+    margin-top: 10px; /* Khoảng cách với đoạn văn trên */
+}
+
+.hero-action-link:hover {
+    text-decoration: underline; /* Thêm gạch chân khi hover */
+}
+
+/* Bỏ hoặc comment out style của .btn-primary nếu bạn không dùng nó ở đây nữa */
+/* .btn-primary { ... } 
+*/
+
+/* CSS cho trang Lưu Trữ Hồ Sơ Y Tế */
+
+/* Hero Section cho trang lưu trữ */
+.storage-hero {
+    background: linear-gradient(135deg, #eaf9ff, #deedf5);
+    position: relative;
+}
+
+.storage-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/storage-pattern.png');
+    opacity: 0.05;
+}
+
+/* Badge đặc biệt cho trang lưu trữ - tương tự như share-badge */
+.storage-badge {
+    position: absolute;
+    right: -20px;
+    bottom: 30px;
+    background-color: #0056b3;
+    color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    z-index: 2;
+}
+
+.storage-badge span:first-child {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 5px;
+    opacity: 0.9;
+}
+
+.storage-badge span:last-child {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+/* Hiệu ứng đặc biệt cho feature-card trang lưu trữ */
+.features .feature-card {
+    overflow: hidden;
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.features .feature-card:hover {
+    border-bottom: 3px solid #0056b3;
+}
+
+.features .feature-card img {
+    transition: transform 0.5s ease;
+}
+
+.features .feature-card:hover img {
+    transform: scale(1.05);
+}
+
+.features .feature-card .feature-link::after {
+    background-color: #0056b3;
+}
+
+/* Tùy chỉnh cho section quy trình lưu trữ */
+#storage-process {
+    background-color: #eaf9ff;
+}
+
+#storage-process .step {
+    position: relative;
+}
+
+#storage-process .step::before {
+    content: '';
+    position: absolute;
+    top: 24px;
+    left: 50%;
+    width: 100%;
+    height: 2px;
+    background-color: #e0e0e0;
+    z-index: 0;
+}
+
+#storage-process .step:last-child::before {
+    display: none;
+}
+
+#storage-process .step-number {
+    position: relative;
+    z-index: 1;
+    background-color: #0056b3;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 auto 20px;
+    box-shadow: 0 5px 15px rgba(0, 86, 179, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#storage-process .step:hover .step-number {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 86, 179, 0.3);
+}
+
+#storage-process .step:hover {
+    border-bottom: 3px solid #0056b3;
+}
+
+/* Form styling custom cho trang lưu trữ */
+select#storage-plan {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+    background-color: #fff;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 15px;
+}
+
+select#storage-plan:focus {
+    border-color: #0056b3;
+    box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
+    outline: none;
+}
+
+/* Button đặc biệt cho trang lưu trữ */
+.btn-submit {
+    background-color: #0056b3;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 86, 179, 0.2);
+    width: 100%;
+}
+
+.btn-submit:hover {
+    background-color: #003d82;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 86, 179, 0.3);
+}
+
+/* Hiệu ứng animation riêng cho trang lưu trữ */
+@keyframes pulseStorage {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.about-image img:hover {
+    animation: pulseStorage 2s ease infinite;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .storage-badge {
+        right: -10px;
+        padding: 12px;
+    }
+    
+    #storage-process .step::before {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content-center h1 {
+        font-size: 2rem;
+    }
+    
+    .storage-badge {
+        right: 5px;
+        bottom: 5px;
+        padding: 10px;
+    }
+    
+    .storage-badge span:first-child {
+        font-size: 0.9rem;
+    }
+    
+    .storage-badge span:last-child {
+        font-size: 1.1rem;
+    }
+    
+    .features .feature-card {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-content-center h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-content-center p {
+        font-size: 1rem;
+    }
+    
+    .about-content {
+        padding: 20px 10px;
+    }
+    
+    .btn-submit {
+        padding: 10px 15px;
+    }
+    
+    .storage-badge {
+        font-size: 0.9rem;
+        padding: 8px;
+        right: 8px;
+        bottom: 8px;
+    }
+}
+
+/* --- Footer Styles --- */
+/* Đảm bảo style cho .copyright hiển thị đúng */
+.copyright {
+    font-size: 0.9em;
+    color: #ccc;
+    line-height: 1.4; /* Tăng khoảng cách dòng nếu 2 dòng copyright quá sát */
+}
+
+/* Các style khác của footer (.site-footer, .footer-top, .footer-bottom, .social-links...) 
+   giữ nguyên như code đã tạo cho ảnh image_bf7fc0.png 
+*/

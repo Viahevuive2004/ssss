@@ -1,0 +1,157 @@
+/* --- Thêm style cho Checkbox --- */
+.form-check {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 25px; /* Khoảng cách với nút Đăng ký */
+    margin-top: 10px; /* Khoảng cách với trường mật khẩu */
+}
+
+.form-check input[type="checkbox"] {
+    margin-right: 10px; /* Khoảng cách giữa checkbox và label */
+    margin-top: 4px;
+    width: 16px;
+    height: 16px;
+    accent-color: #0056b3;
+    cursor: pointer;
+}
+
+.form-check label {
+    /* Ghi đè margin-bottom mặc định của label trong .form-group nếu có */
+    margin-bottom: 0;
+    font-size: 0.9em; /* Cỡ chữ nhỏ hơn */
+    color: #555;
+    font-weight: normal; /* Chữ thường, không đậm */
+    line-height: 1.5;
+    cursor: pointer;
+}
+
+.form-check label a {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+.form-check label a:hover {
+    color: #003d82;
+}
+
+/* --- Điều chỉnh nếu cần --- */
+/* Đảm bảo nút submit vẫn hoạt động đúng */
+/* .submit-btn { ... giữ nguyên ... } */
+
+/* Xóa hoặc comment out nếu không dùng */
+/* .form-links { ... } */
+/* .disclaimer { ... } */
+
+/* Thay đổi icon trong nút tab nếu cần */
+/* Ví dụ nếu dùng ảnh khác */
+/*
+.tab-button .icon {
+    content: url('icon-register.png');
+}
+*/
+
+/* CSS bổ sung cho trang đăng ký */
+
+/* Hiệu chỉnh màu chữ và icon cho trang đăng ký */
+.site-title {
+    color: #0056b3; /* Màu xanh */
+}
+
+.site-title:after {
+    background-color: #0056b3;
+}
+
+.tab-button {
+    color: #0056b3;
+    background-color: #f0f7ff;
+}
+
+.tab-button i {
+    color: #0056b3;
+}
+
+.input-with-icon i {
+    color: #0056b3;
+}
+
+/* Tùy chỉnh welcome message */
+.welcome-message {
+    color: #333;
+}
+
+/* Hiệu ứng hình ảnh */
+.illustration-column {
+    background-color: #f0f7ff;
+}
+
+.illustration-column img {
+    max-width: 90%;
+    animation: slideInRight 1s ease;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive điều chỉnh */
+@media (max-width: 768px) {
+    .form-check label {
+        font-size: 0.85em;
+    }
+    
+    .form-group {
+        margin-bottom: 20px;
+    }
+}
+
+/* Animation cho form fields */
+form .form-group:nth-child(1) {
+    animation: fadeInUp 0.5s ease 0.2s both;
+}
+
+form .form-group:nth-child(2) {
+    animation: fadeInUp 0.5s ease 0.3s both;
+}
+
+form .form-group:nth-child(3) {
+    animation: fadeInUp 0.5s ease 0.4s both;
+}
+
+form .form-group:nth-child(4) {
+    animation: fadeInUp 0.5s ease 0.5s both;
+}
+
+form .form-group:nth-child(5) {
+    animation: fadeInUp 0.5s ease 0.6s both;
+}
+
+form .form-group:nth-child(6) {
+    animation: fadeInUp 0.5s ease 0.7s both;
+}
+
+form .submit-btn {
+    animation: fadeInUp 0.5s ease 0.8s both;
+}
+
+.form-links {
+    animation: fadeInUp 0.5s ease 0.9s both;
+}
+
+/* Hiệu ứng nút submit */
+.submit-btn {
+    background-color: #0056b3;
+    box-shadow: 0 4px 6px rgba(0, 86, 179, 0.2);
+}
+
+.submit-btn:hover {
+    background-color: #003d82;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 86, 179, 0.3);
+}

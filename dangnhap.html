@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập - Hồ Sơ Y Tế</title>
+    <link rel="stylesheet" href="source/style/style-login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="page-loader">
+        <div class="loader"></div>
+    </div>
+
+    <div class="login-container fade-in">
+        <div class="form-column">
+            <a href="index.html" class="site-title">HỒ SƠ Y TẾ</a>
+            <p class="welcome-message">Chào mừng bạn đến với chúng tôi</p>
+
+            <button class="tab-button active">
+                <i class="fas fa-user-circle"></i>
+                Đăng nhập
+            </button>
+
+            <form action="#" method="post">
+                <div class="form-group">
+                    <label for="username">Tên Đăng Nhập</label>
+                    <div class="input-with-icon">
+                        <input type="text" id="username" name="username" required>
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mật Khẩu</label>
+                    <div class="input-with-icon">
+                        <input type="password" id="password" name="password" required>
+                        <i class="fas fa-lock"></i>
+                    </div>
+                </div>
+                <button type="submit" class="submit-btn">Đăng nhập</button>
+            </form>
+
+            <div class="form-links">
+                <a href="forgot-password.html" class="forgot-password">Quên mật khẩu?</a>
+                <a href="dangky.html" class="register-link">Đăng ký</a>
+            </div>
+
+            <p class="disclaimer">
+                Khi đăng nhập bạn đồng ý với các <a href="#">điều kiện và điều khoản</a> cũng như
+                <a href="#">chính sách bảo mật</a> của chúng tôi
+            </p>
+        </div>
+
+        <div class="illustration-column">
+            <img src="images/login-illustration.png" alt="Minh họa đăng nhập">
+        </div>
+    </div>
+
+    <script src="source/script/index.js"></script>
+</body>
+</html>

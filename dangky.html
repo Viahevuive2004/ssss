@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký - Hồ Sơ Y Tế</title>
+    <link rel="stylesheet" href="source/style/style-login.css">
+    <link rel="stylesheet" href="source/style/dangky.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="page-loader">
+        <div class="loader"></div>
+    </div>
+
+    <div class="login-container fade-in">
+        <div class="form-column">
+            <a href="index.html" class="site-title">HỒ SƠ Y TẾ</a>
+            <p class="welcome-message">Tạo tài khoản mới</p>
+
+            <button class="tab-button active">
+                <i class="fas fa-user-plus"></i>
+                Đăng ký
+            </button>
+
+            <form action="#" method="post">
+                <div class="form-group">
+                    <label for="fullname">Họ và tên</label>
+                    <div class="input-with-icon">
+                        <input type="text" id="fullname" name="fullname" placeholder="Nhập họ tên đầy đủ" required>
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <div class="input-with-icon">
+                        <input type="email" id="email" name="email" placeholder="Nhập địa chỉ email" required>
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Số điện thoại</label>
+                    <div class="input-with-icon">
+                        <input type="tel" id="phone" name="phone" placeholder="Nhập số điện thoại" required>
+                        <i class="fas fa-phone"></i>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mật khẩu</label>
+                    <div class="input-with-icon">
+                        <input type="password" id="password" name="password" placeholder="Tạo mật khẩu mới" required>
+                        <i class="fas fa-lock"></i>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password">Xác nhận mật khẩu</label>
+                    <div class="input-with-icon">
+                        <input type="password" id="confirm-password" name="confirm-password" placeholder="Xác nhận mật khẩu" required>
+                        <i class="fas fa-lock-open"></i>
+                    </div>
+                </div>
+
+                <div class="form-group form-check">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">Tôi đồng ý với <a href="#">điều khoản sử dụng</a> và <a href="#">chính sách bảo mật</a></label>
+                </div>
+
+                <button type="submit" class="submit-btn">Đăng ký</button>
+            </form>
+
+            <div class="form-links">
+                <span>Đã có tài khoản?</span>
+                <a href="dangnhap.html" class="register-link">Đăng nhập ngay</a>
+            </div>
+
+            <p class="disclaimer">
+                Thông tin của bạn sẽ được bảo mật theo <a href="#">chính sách bảo mật</a> của chúng tôi
+            </p>
+        </div>
+
+        <div class="illustration-column">
+            <img src="images/register-illustration.png" alt="Minh họa đăng ký">
+        </div>
+    </div>
+
+    <script src="source/script/index.js"></script>
+</body>
+</html>

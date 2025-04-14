@@ -1,0 +1,495 @@
+/* --- Reset & Basic Styles --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: sans-serif; /* Thay bằng font chữ bạn muốn */
+    line-height: 1.6;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    color: inherit; /* Kế thừa màu từ phần tử cha */
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.container {
+    max-width: 1100px; /* Hoặc chiều rộng bạn muốn */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- Button Styles --- */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    border: none;
+}
+
+.btn-login {
+    background-color: #f0f0f0; /* Màu nền xám nhạt cho nút đăng nhập */
+    color: #333;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+}
+
+.btn-login .icon {
+    margin-right: 8px;
+    /* Thêm style cho icon nếu dùng font icon */
+}
+
+.btn-primary {
+    background-color: #007bff; /* Màu xanh dương chính */
+    color: #fff;
+    margin-top: 15px;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+
+/* --- Header Styles --- */
+.site-header {
+    background-color: #fff;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+    position: sticky; /* Giữ header cố định khi cuộn trang (tùy chọn) */
+    top: 0;
+    z-index: 100;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #0056b3; /* Màu xanh đậm cho logo */
+}
+
+.main-nav ul {
+    display: flex;
+}
+
+.main-nav ul li {
+    margin-left: 25px;
+}
+
+.main-nav ul li a {
+    color: #555;
+    font-weight: 500;
+    padding: 5px 0;
+    position: relative;
+}
+
+.main-nav ul li a:hover {
+    color: #007bff;
+}
+
+/* Optional: underline effect on hover */
+.main-nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #007bff;
+    transition: width 0.3s ease;
+}
+.main-nav ul li a:hover::after {
+    width: 100%;
+}
+
+
+/* --- Hero Section Styles --- */
+.hero-section {
+    background-color: #f8f9fa; /* Màu nền rất nhạt */
+    padding: 60px 0;
+}
+
+.hero-container {
+    display: flex;
+    align-items: center;
+    gap: 40px; /* Khoảng cách giữa ảnh và text */
+}
+
+.hero-image {
+    flex: 1; /* Chiếm 1 phần */
+    /* Có thể thêm hiệu ứng ảnh nếu muốn */
+}
+
+.hero-content {
+    flex: 1; /* Chiếm 1 phần */
+}
+
+.hero-content h2 {
+    font-size: 1em; /* Cỡ chữ nhỏ hơn cho tiêu đề phụ */
+    color: #666;
+    margin-bottom: 5px;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.hero-content p {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+
+/* --- Footer Styles --- */
+.site-footer {
+    background-color: #003366; /* Màu xanh navy đậm */
+    color: #fff;
+    padding: 40px 0 20px 0; /* Padding top/bottom */
+}
+
+.footer-container {
+    /* Có thể dùng flexbox cho cả container nếu cần căn chỉnh phức tạp hơn */
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #004080; /* Đường kẻ mờ phân cách */
+    flex-wrap: wrap; /* Cho phép xuống dòng nếu không đủ chỗ */
+    gap: 20px;
+}
+
+.footer-logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.footer-nav a {
+    color: #ccc; /* Màu chữ nhạt hơn cho link footer */
+    margin-left: 20px;
+    font-size: 0.95em;
+}
+
+.footer-nav a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9em;
+    color: #ccc;
+    flex-wrap: wrap; /* Cho phép xuống dòng nếu không đủ chỗ */
+    gap: 15px;
+}
+
+.social-links {
+    display: flex;
+    align-items: center;
+}
+
+.social-links span {
+    margin-right: 15px;
+}
+
+.social-icon {
+    display: inline-block;
+    width: 30px; /* Kích thước ô chứa icon */
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 4px;
+    background-color: #004080; /* Nền cho icon */
+    color: #fff;
+    margin-left: 8px;
+    font-weight: bold; /* Để chữ F, ► rõ hơn */
+}
+
+.social-icon:hover {
+    background-color: #0056b3; /* Màu sáng hơn khi hover */
+}
+
+/* --- Responsive (Ví dụ cơ bản) --- */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .main-nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+    .main-nav ul li {
+        margin-left: 0;
+        margin-bottom: 5px;
+        width: 100%;
+    }
+     .login-button {
+        margin-top: 10px;
+    }
+
+    .hero-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .hero-content {
+         margin-top: 30px;
+    }
+
+     .footer-top, .footer-bottom {
+        flex-direction: column;
+        align-items: center; /* Căn giữa các item khi xuống dòng */
+        text-align: center;
+    }
+     .footer-nav {
+        margin-top: 15px;
+        display: flex;
+        flex-direction: column; /* Link footer xuống dòng */
+        gap: 10px;
+     }
+     .footer-nav a {
+        margin-left: 0;
+     }
+     .social-links {
+        margin-top: 15px;
+     }
+}
+
+/* CSS bổ sung cho trang quản lý */
+
+/* Hero Section Quản lý */
+.manage-hero {
+    background: linear-gradient(135deg, #eaf5ff, #e9f0f7);
+    position: relative;
+}
+
+.manage-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/health-pattern.png');
+    opacity: 0.04;
+}
+
+.hero-content-center {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-content-center h1 {
+    color: #0056b3;
+    margin-bottom: 20px;
+    font-size: 2.8rem;
+    font-weight: 700;
+    animation: fadeIn 0.8s ease;
+}
+
+.hero-content-center p {
+    color: #555;
+    margin-bottom: 30px;
+    font-size: 1.2rem;
+    animation: fadeIn 0.8s ease 0.2s both;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    animation: fadeIn 0.8s ease 0.4s both;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Manage Badge */
+.manage-badge {
+    position: absolute;
+    right: -20px;
+    bottom: 30px;
+    background-color: #0056b3;
+    color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    z-index: 2;
+}
+
+.manage-badge span:first-child {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.manage-badge span:last-child {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Steps Section */
+.usage-section {
+    padding: 80px 0;
+    background-color: #f9f9f9;
+}
+
+.steps-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.step {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.step:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.step-number {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #0056b3;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.step-content h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.step-content p {
+    color: #666;
+}
+
+/* Select Styling */
+select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+    background-color: #fff;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 15px;
+}
+
+select:focus {
+    border-color: #0056b3;
+    box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
+    outline: none;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .hero-content-center h1 {
+        font-size: 2.3rem;
+    }
+    
+    .manage-badge {
+        right: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content-center h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        width: 80%;
+        margin: 0 auto;
+    }
+    
+    .steps-container {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: 30px auto 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-content-center h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-content-center p {
+        font-size: 1rem;
+    }
+    
+    .manage-badge {
+        padding: 10px;
+        right: 10px;
+        bottom: 10px;
+    }
+    
+    .manage-badge span:first-child {
+        font-size: 1.1rem;
+    }
+}

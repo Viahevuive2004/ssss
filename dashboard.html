@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hồ Sơ Y Tế - Dashboard</title>
+    <link rel="stylesheet" href="source/style/style-dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar" id="sidebar">
+            <div class="logo">
+                HỒ SƠ Y TẾ
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Tìm kiếm">
+                <button title="Tìm kiếm"><i class="fas fa-search"></i></button>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li class="active"><a href="#tongquan"><i class="fas fa-tachometer-alt"></i> Tổng quan</a></li>
+                    <li><a href="#hoso-benhnhan"><i class="fas fa-user-injured"></i> Hồ sơ bệnh nhân</a></li>
+                    <li><a href="#hoso-bacsi"><i class="fas fa-user-md"></i> Hồ sơ bác sĩ</a></li>
+                    <li><a href="#lichkham"><i class="fas fa-calendar-alt"></i> Lịch khám</a></li>
+                    <li><a href="#donthuoc"><i class="fas fa-prescription-bottle-alt"></i> Đơn thuốc</a></li>
+                    <li><a href="#tracuu"><i class="fas fa-search-plus"></i> Tra cứu</a></li>
+                    <li><a href="#caidat"><i class="fas fa-cog"></i> Cài đặt</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <div class="main-content">
+            <header class="main-header">
+                <div class="header-left">
+                    <button class="menu-toggle" id="menu-toggle" title="Toggle Menu"><i class="fas fa-bars"></i></button>
+                    <button class="update-btn">Update Now!</button>
+                </div>
+                <div class="header-right">
+                     <button class="notification-btn" title="Thông báo"><i class="fas fa-bell"></i><span class="badge">4</span></button>
+                    <div class="user-profile" title="Tài khoản">
+                        <img src="avatar.png" alt="Avatar" class="avatar">
+                        <span>Ngọc Anh</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </div>
+                </div>
+            </header>
+
+            <main class="dashboard-body">
+
+                <div id="tongquan" class="dashboard-section active">
+                    <div class="overview-grid">
+                        <!-- Row 1: Stat cards -->
+                        <div class="stat-card red-border">
+                            <div class="card-icon red"><i class="fas fa-calendar-day"></i></div>
+                            <div class="card-content"> <div class="stat-number">4</div> <div class="stat-label">Lịch khám hôm nay</div></div>
+                            <button class="card-action red"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <div class="stat-card grey-border">
+                            <div class="card-icon grey"><i class="fas fa-user-plus"></i></div>
+                            <div class="card-content"> <div class="stat-number">160</div> <div class="stat-label">Bệnh nhân mới</div></div>
+                            <button class="card-action grey"><i class="fas fa-user-plus"></i></button>
+                        </div>
+                        <div class="stat-card red-border">
+                            <div class="card-icon red"><i class="fas fa-comments"></i></div>
+                            <div class="card-content"> <div class="stat-number">160</div> <div class="stat-label">Phản hồi</div></div>
+                            <button class="card-action red"><i class="fas fa-question-circle"></i></button>
+                        </div>
+
+                        <!-- Row 2: Main widgets - đồng đều 3 thành phần chính -->
+                        <div class="main-widget chart-widget">
+                            <div class="widget-header">
+                                <h4>Thống kê hoạt động</h4>
+                                <div class="header-actions">
+                                    <button title="Làm mới"><i class="fas fa-sync-alt"></i></button>
+                                    <button title="Toàn màn hình"><i class="fas fa-expand-arrows-alt"></i></button>
+                                </div>
+                            </div>
+                            <div class="widget-body">
+                                <canvas id="barChart"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="main-widget revenue-widget">
+                            <div class="widget-header">
+                                <h4>Doanh thu cả khoa</h4>
+                                <div class="header-actions">
+                                    <button title="Làm mới"><i class="fas fa-sync-alt"></i></button>
+                                    <button title="Toàn màn hình"><i class="fas fa-expand-arrows-alt"></i></button>
+                                </div>
+                            </div>
+                            <div class="widget-body">
+                                <div class="chart-info">
+                                    <div class="chart-percentage">84%</div>
+                                    <div class="chart-label">Tăng trưởng so với kỳ trước</div>
+                                    <p class="widget-summary">Tổng doanh thu: 1.32 tỷ VND</p>
+                                </div>
+                                <div class="chart-container">
+                                    <canvas id="revenueChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="main-widget invoice-widget">
+                            <div class="widget-header">
+                                <h4>Hóa đơn gần đây</h4>
+                                <div class="header-actions">
+                                    <button title="Làm mới"><i class="fas fa-sync-alt"></i></button>
+                                    <button title="Toàn màn hình"><i class="fas fa-expand-arrows-alt"></i></button>
+                                </div>
+                            </div>
+                            <div class="widget-body">
+                                <p class="widget-summary">Tổng hóa đơn đã thanh toán 240, chưa thanh toán 150</p>
+                                <div class="table-container">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Hóa đơn</th>
+                                                <th>Tên bệnh nhân</th>
+                                                <th>Trạng thái</th>
+                                                <th>Hạn</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>JW0012345</td>
+                                                <td>Nhật Hạ</td>
+                                                <td><span class="status status-paid">Đã thanh toán</span></td>
+                                                <td>10/4/2025</td>
+                                            </tr>
+                                            <tr>
+                                                <td>JW0012346</td>
+                                                <td>Minh Anh</td>
+                                                <td><span class="status status-pending">Chưa thanh toán</span></td>
+                                                <td>15/4/2025</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Row 3: Mini widgets -->
+                        <div class="mini-widget orange">
+                            <div class="widget-icon"><i class="fas fa-stomach"></i></div>
+                            <div class="widget-content">
+                                <div class="widget-label">Số ca viêm dạ dày</div>
+                                <div class="widget-value">300</div>
+                                <div class="progress-bar"><div class="progress" style="width: 60%;"></div></div>
+                            </div>
+                        </div>
+                        <div class="mini-widget blue">
+                            <div class="widget-icon"><i class="fas fa-heartbeat"></i></div>
+                            <div class="widget-content">
+                                <div class="widget-label">Số ca điều trị khỏi</div>
+                                <div class="widget-value">100</div>
+                                <div class="progress-bar"><div class="progress" style="width: 30%;"></div></div>
+                            </div>
+                        </div>
+                        <div class="mini-widget green">
+                            <div class="widget-icon"><i class="fas fa-users"></i></div>
+                            <div class="widget-content">
+                                <div class="widget-label">Tổng số bệnh nhân</div>
+                                <div class="widget-value">5.020</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="hoso-benhnhan" class="dashboard-section">
+                    <div class="profile-content-grid">
+                        <div class="profile-left-column">
+                            <h1 class="page-title font-serif">Hồ sơ bệnh nhân</h1>
+                            <div class="content-search-bar"><input type="text" placeholder="Tìm kiếm tên hoặc ID hoặc tên khoa"><button title="Tìm kiếm"><i class="fas fa-search"></i></button></div>
+                            <section class="patient-list-section"><h2 class="section-title font-serif">Bệnh nhân</h2><div class="table-container"><table><thead><tr><th>Tên</th><th>ID</th><th>Ngày sinh</th><th>Địa chỉ</th></tr></thead><tbody><tr><td>Nhật Hạ</td><td>Ocb1234</td><td>13/2/2000</td><td>Hòa Minh...</td></tr></tbody></table></div></section>
+                            <section class="treatment-list-section"><h2 class="section-title font-serif">Bệnh nhân đang điều trị</h2><div class="table-container"><table><thead><tr><th>Tên</th><th>ID</th><th>Ngày sinh</th><th>Địa chỉ</th></tr></thead><tbody><tr><td>Nhật Hạ</td><td>Ocb1234</td><td>13/2/2000</td><td>Hòa Minh...</td></tr></tbody></table></div></section>
+                        </div>
+                        <div class="profile-right-column">
+                            <div class="patient-card">
+                                <h2 class="section-title font-serif patient-name">Nhật Hạ</h2>
+                                <div class="patient-details">
+                                    <div class="detail-item"><span class="detail-label">ID bệnh nhân</span><span class="detail-value">Ocb1234</span></div><div class="detail-item"><span class="detail-label">Giới tính</span><span class="detail-value">Nữ</span></div><div class="detail-item"><span class="detail-label">Ngày sinh</span><span class="detail-value">13/2/2000</span></div><div class="detail-item"><span class="detail-label">Email</span><span class="detail-value">b***dfj@gmail.com</span></div><div class="detail-item"><span class="detail-label">Số điện thoại</span><span class="detail-value">1234567891</span></div><div class="detail-item"><span class="detail-label">Địa chỉ</span><span class="detail-value">123 Phan Chu Chinh</span></div><div class="detail-item"><span class="detail-label">Mã số y tế</span><span class="detail-value">123456789023</span></div><div class="detail-item"><span class="detail-label">Nghề nghiệp</span><span class="detail-value">Kế toán</span></div><div class="detail-item"><span class="detail-label">Nhóm máu</span><span class="detail-value">O</span></div><div class="detail-item"><span class="detail-label">Cân Nặng</span><span class="detail-value">42kg</span></div><div class="detail-item"><span class="detail-label">Chiều cao</span><span class="detail-value">1m60</span></div><div class="detail-item"><span class="detail-label">Tiền sử bệnh gia đình</span><span class="detail-value">Không</span></div><div class="detail-item"><span class="detail-label">Dị ứng thuốc</span><span class="detail-value">Không</span></div>
+                                </div>
+                                <h3 class="sub-section-title font-serif">Lịch sử bệnh</h3><ul class="history-list"><li>Tăng huyết áp</li><li>Viêm dạ dày cấp</li></ul>
+                                <h3 class="sub-section-title font-serif">Lịch sử khám</h3><div class="table-container visit-history-table"><table><thead><tr><th>Ngày</th><th>Giờ</th><th>Khoa</th><th>Bác sĩ khám</th><th>Chẩn đoán</th></tr></thead><tbody><tr><td>5/2/2025</td><td>14h30</td><td>Nội tiêu hóa</td><td>Ngọc Anh</td><td>Tăng huyết áp, viêm dạ dày cấp</td></tr><tr><td>4/3/2025</td><td>8h30</td><td>Nội tiêu hóa</td><td>Ngọc Anh</td><td>Tăng huyết áp</td></tr></tbody></table></div>
+                                <h3 class="sub-section-title font-serif">Đơn thuốc</h3><ul class="prescription-list"><li>hydrochlorothiazide : sáng 1 viên</li></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="hoso-bacsi" class="dashboard-section">
+                    <div class="profile-content-grid">
+                        <div class="profile-left-column">
+                            <h1 class="page-title font-serif">Hồ sơ bác sĩ</h1>
+                            <div class="content-search-bar"><input type="text" placeholder="Tìm kiếm tên hoặc ID hoặc chuyên khoa"><button title="Tìm kiếm"><i class="fas fa-search"></i></button></div>
+                            <section class="doctor-list-section"><h2 class="section-title font-serif">Bác sĩ</h2><div class="table-container"><table><thead><tr><th>Tên</th><th>Mã bác sĩ</th><th>Ngày sinh</th><th>Chuyên Khoa</th></tr></thead><tbody><tr><td>Ngọc Anh</td><td>Ocb1234...</td><td>13/2/2000</td><td>Nội tiêu hóa</td></tr></tbody></table></div></section>
+                        </div>
+                        <div class="profile-right-column">
+                             <div class="doctor-card">
+                                <div class="doctor-info-header">
+                                    <div class="doctor-basic-info"><h2 class="section-title font-serif doctor-name">Ngọc Anh</h2><div class="details-grid"><div class="detail-item"><span class="detail-label">Mã bác sĩ</span><span class="detail-value">Ocb1234</span></div><div class="detail-item"><span class="detail-label">Giới tính</span><span class="detail-value">Nữ</span></div><div class="detail-item"><span class="detail-label">Ngày sinh</span><span class="detail-value">13/2/2000</span></div><div class="detail-item"><span class="detail-label">Email</span><span class="detail-value">b***th@gmail.com</span></div><div class="detail-item"><span class="detail-label">Số điện thoại</span><span class="detail-value">1234567891</span></div><div class="detail-item"><span class="detail-label">Địa chỉ</span><span class="detail-value">123 Phan Chu Chinh</span></div></div></div>
+                                    <div class="doctor-avatar"><img src="doctor-avatar.png" alt="Ảnh bác sĩ"></div>
+                                </div>
+                                <section class="doctor-section"><h3 class="sub-section-title font-serif">Chuyên môn</h3><div class="section-content"><div class="detail-item-row"><span class="detail-label">Chuyên Khoa:</span><span class="detail-value">Nội tiêu hóa</span></div><div class="detail-item-row"><span class="detail-label">Trình độ học vấn:</span><span class="detail-value">[Trình độ]</span></div><div class="detail-item-row"><span class="detail-label">Chứng chỉ hành nghề:</span><span class="detail-value">[Số chứng chỉ]</span></div><div class="detail-item-row"><span class="detail-label">Số năm kinh nghiệm:</span><span class="detail-value">[Số năm]</span></div><div class="detail-item-row"><span class="detail-label">Nơi công tác:</span><span class="detail-value">[Tên bệnh viện/phòng khám]</span></div></div></section>
+                                <section class="doctor-section"><h3 class="sub-section-title font-serif">Lịch sử hoạt động</h3><div class="section-content"><div class="detail-item-row"><span class="detail-label">Số lượt khám đã thực hiện:</span><span class="detail-value">[Số lượt]</span></div><div class="detail-item-row"><span class="detail-label">Bệnh thường điều trị:</span><span class="detail-value">[Liệt kê bệnh]</span></div><div class="detail-item-row"><span class="detail-label">Số bệnh nhân được điều trị khỏi:</span><span class="detail-value">[Số lượng]</span></div><div class="detail-item-row"><span class="detail-label">Số bệnh nhân đang điều trị:</span><span class="detail-value">[Số lượng]</span></div><div class="detail-item-row"><span class="detail-label">Đơn thuốc đã kê:</span><span class="detail-value">[Số lượng]</span></div></div></section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="lichkham" class="dashboard-section">
+                     <h1 class="page-title font-serif">Lịch khám</h1>
+                     <form action="#" method="post" class="appointment-form">
+                         <div class="form-grid">
+                             <div class="form-column"><div class="form-group"><label for="patient-name-lk">Tên <span class="required-asterisk">*</span></label><input type="text" id="patient-name-lk" name="patient_name" required></div><div class="form-group"><label for="patient-id-lk">Số CCCD/Mã bảo hiểm <span class="required-asterisk">*</span></label><input type="text" id="patient-id-lk" name="patient_id" required></div><div class="form-group"><label for="patient-phone-lk">Số điện thoại <span class="required-asterisk">*</span></label><input type="tel" id="patient-phone-lk" name="patient_phone" required></div></div>
+                             <div class="form-column"><div class="form-group"><label for="symptoms-lk">Triệu chứng <span class="required-asterisk">*</span></label><input type="text" id="symptoms-lk" name="symptoms" required></div><div class="form-group"><label for="department-lk">Chọn Khoa</label><select id="department-lk" name="department"><option value="">-- Chọn khoa --</option><option value="noi-tieu-hoa">Nội tiêu hóa</option></select></div><div class="form-group"><label for="doctor-lk">Chọn bác sĩ</label><select id="doctor-lk" name="doctor"><option value="">-- Chọn bác sĩ --</option><option value="ngoc-anh">Ngọc Anh</option></select></div></div>
+                         </div>
+                         <div class="form-group date-time-picker"><label for="appointment-datetime-lk">Ngày giờ <span class="required-asterisk">*</span></label><input type="hidden" id="appointment-datetime-lk" name="appointment_datetime" required><div class="picker-display">Chọn ngày và giờ...</div><div class="picker-widget"><div class="calendar-placeholder"><div class="calendar-header"><span>&lt;</span> Tháng 4 <span>&gt;</span></div><div class="calendar-grid"><span>T2</span><span>T3</span><span>T4</span><span>T5</span><span>T6</span><span>T7</span><span>CN</span><span class="other-month">31</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span></div></div><div class="time-selector"><select name="appointment_time"><option value="08:00">8:00 (Việt Nam)</option></select></div></div></div>
+                         <div class="form-group notes-group"><label for="notes-lk">Ghi chú</label><textarea id="notes-lk" name="notes" rows="4"></textarea></div>
+                         <div class="form-actions"><button type="submit" class="action-button submit-appointment-btn">Tạo lịch khám</button></div>
+                    </form>
+                </div>
+
+                <div id="donthuoc" class="dashboard-section">
+                    <h1 class="page-title font-serif">Đơn thuốc</h1>
+                    <div class="content-toolbar"><div class="content-search-bar"><input type="text" placeholder="Tìm kiếm theo mã đơn thuốc"><button title="Tìm kiếm"><i class="fas fa-search"></i></button></div><div class="filter-buttons"><button class="filter-btn active">Hôm nay</button><button class="filter-btn">Ngày</button><button class="filter-btn">Tuần</button></div></div>
+                    <div class="prescription-list-container"><div class="list-header"><span class="col-id">Mã đơn thuốc</span><span class="col-name">Tên bệnh nhân</span><span class="col-date">Ngày</span><span class="col-action"></span></div><div class="list-row"><span class="col-id">Ovbhy1245</span><span class="col-name">Nhật Hạ</span><span class="col-date">06/04/2025</span><span class="col-action"><button class="action-button">Xem đơn thuốc</button></span></div><div class="list-row"><span class="col-id">Kdegr5678</span><span class="col-name">Minh Anh</span><span class="col-date">05/04/2025</span><span class="col-action"><button class="action-button">Xem đơn thuốc</button></span></div></div>
+                </div>
+
+                <div id="tracuu" class="dashboard-section">
+                    <h1 class="page-title font-serif">Tra cứu</h1>
+                    <p>Nội dung chức năng tra cứu sẽ được hiển thị ở đây.</p>
+                    <p>Chức năng đang được phát triển.</p>
+                    </div>
+
+                <div id="caidat" class="dashboard-section">
+                    <h1 class="page-title font-serif">Cài đặt</h1>
+                     <div class="settings-grid">
+                         <div class="settings-nav-column">
+                             <div class="settings-nav-card">
+                                 <ul class="settings-nav-list">
+                                     <li class="active"><a href="#personal-info"><i class="fas fa-user-edit"></i> Thông tin cá nhân</a></li>
+                                     <li><a href="#account"><i class="fas fa-user-shield"></i> Tài khoản</a></li>
+                                     <li><a href="#security"><i class="fas fa-lock"></i> Quyền truy cập và bảo mật</a></li>
+                                     <li><a href="#notifications"><i class="fas fa-bell"></i> Thông báo</a></li>
+                                     <li><a href="#support"><i class="fas fa-headset"></i> Hỗ trợ và liên hệ</a></li>
+                                     <li><a href="#logout"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a></li>
+                                 </ul>
+                             </div>
+                         </div>
+                         <div class="settings-content-column">
+                             <div class="settings-content-card">
+                                 <div id="personal-info-content" class="settings-content-section active">
+                                    <h2 class="content-title">Thông tin cá nhân</h2>
+                                    <div class="settings-info-list"><div class="info-row"><span class="info-label">Họ và tên</span><span class="info-value">[Tên người dùng]</span></div><div class="info-row"><span class="info-label">Số điện thoại</span><span class="info-value">[Số điện thoại]</span></div><div class="info-row"><span class="info-label">Email</span><span class="info-value">[Địa chỉ email]</span></div><div class="info-row"><span class="info-label">Mã số bác sĩ</span><span class="info-value">[Mã số nếu là bác sĩ]</span></div><div class="info-row"><span class="info-label">Chuyên khoa</span><span class="info-value">[Chuyên khoa nếu là bác sĩ]</span></div></div>
+                                    <div class="settings-actions"><button class="action-button">Sửa</button></div>
+                                </div>
+                                <div id="account-content" class="settings-content-section"><h2 class="content-title">Tài khoản</h2><ul class="settings-action-list"><li><a href="#change-password"><span>Thay đổi mật khẩu</span><span class="arrow-icon">&gt;</span></a></li><li><a href="#manage-devices"><span>Quản lý thiết bị đăng nhập</span><span class="arrow-icon">&gt;</span></a></li><li><a href="#language-settings"><span>Cài đặt ngôn ngữ</span><span class="arrow-icon">&gt;</span></a></li></ul></div>
+                                <div id="security-content" class="settings-content-section"><h2 class="content-title">Quyền truy cập và bảo mật</h2><ul class="settings-action-list"><li><a href="#access-list"><span>Danh sách quyền truy cập</span><span class="arrow-icon">&gt;</span></a></li><li><a href="#permission-management"><span>Quản lý phân quyền</span><span class="arrow-icon">&gt;</span></a></li><li><a href="#login-history"><span>Lịch sử đăng nhập</span><span class="arrow-icon">&gt;</span></a></li></ul></div>
+                                <div id="notifications-content" class="settings-content-section"><h2 class="content-title">Thông báo</h2><ul class="settings-action-list"><li><a href="#new-appointment-noti"><span>Có lịch hẹn mới</span><span class="arrow-icon">&gt;</span></a></li><li><a href="#cancellation-noti"><span>Bệnh nhân hủy lịch</span><span class="arrow-icon">&gt;</span></a></li><li><a href="#approval-noti"><span>Hồ sơ cần ký duyệt</span><span class="arrow-icon">&gt;</span></a></li></ul></div>
+                                 <div id="support-content" class="settings-content-section"><h2 class="content-title">Hỗ trợ và liên hệ</h2><ul class="settings-action-list"><li><a href="#feedback"><span>Gửi phản hồi, báo lỗi</span><span class="arrow-icon">&gt;</span></a></li><li><a href="#contact-us"><span>Liên hệ</span><span class="arrow-icon">&gt;</span></a></li><li><a href="#user-guide"><span>Hướng dẫn sử dụng</span><span class="arrow-icon">&gt;</span></a></li></ul></div>
+                             </div>
+                         </div>
+                     </div>
+                </div>
+
+            </main> </div> </div> <script src="source/script/script_dashborad.js"></script>
+    <script src="source/script/charts.js"></script>
+</body>
+</html>

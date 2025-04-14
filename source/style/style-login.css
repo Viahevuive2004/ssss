@@ -1,0 +1,695 @@
+/* --- Reset & Basic Styles --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Giống với trang chủ */
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa; /* Nền xám nhạt giống trang chủ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #0056b3; /* Màu link xanh đậm */
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: #003d82; /* Màu khi hover đậm hơn */
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* --- Page Loader (từ trang chủ) --- */
+.page-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.page-loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #0056b3;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* --- Login Container Layout --- */
+.login-container {
+    display: flex;
+    max-width: 1000px;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    animation: fadeIn 0.8s ease;
+}
+
+.form-column {
+    flex: 1;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.illustration-column {
+    flex: 1;
+    background-color: #f0f7ff; /* Nền xanh nhạt */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+.illustration-column::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/pattern-dots.png');
+    opacity: 0.05;
+    pointer-events: none;
+}
+
+.illustration-column img {
+    max-width: 90%;
+    position: relative;
+    z-index: 2;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+/* --- Form Column Styles --- */
+.site-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #0056b3; /* Màu xanh */
+    margin-bottom: 20px;
+    display: inline-block;
+    position: relative;
+}
+
+.site-title:after {
+    content: '';
+    position: absolute;
+    width: 30%;
+    height: 2px;
+    background-color: #0056b3;
+    bottom: -5px;
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+.site-title:hover:after {
+    width: 100%;
+}
+
+.welcome-message {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 35px;
+    line-height: 1.3;
+    animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+.tab-button {
+    background-color: #f0f7ff; /* Nền xanh nhạt */
+    border: 1px solid #d0e7ff;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    margin-bottom: 30px;
+    color: #0056b3; /* Màu xanh */
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 86, 179, 0.1);
+}
+
+.tab-button i {
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+.tab-button.active {
+    background-color: #e3f0ff;
+    border-color: #b0d5ff;
+}
+
+.tab-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 86, 179, 0.2);
+}
+
+/* --- Form Styles --- */
+form {
+    width: 100%;
+    margin-bottom: 25px;
+    animation: fadeInUp 0.8s ease 0.4s both;
+}
+
+.form-group {
+    margin-bottom: 28px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.input-with-icon {
+    position: relative;
+    margin-bottom: 5px;
+}
+
+.input-with-icon i {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #0056b3; /* Màu xanh cho icon */
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+    font-size: 1.2rem;
+}
+
+.input-with-icon input:focus + i {
+    opacity: 1;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 14px 40px 14px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #fff;
+    font-size: 1em;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="password"]:focus {
+    border-color: #0056b3; /* Viền xanh khi focus */
+    box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
+}
+
+.form-group input[type="email"] {
+    width: 100%;
+    padding: 14px 40px 14px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #fff;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+    height: 50px;
+}
+
+.form-group input[type="email"]:focus {
+    border-color: #0056b3;
+    box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #0056b3; /* Màu xanh */
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.05rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    box-shadow: 0 4px 6px rgba(0, 86, 179, 0.2);
+    height: 50px;
+}
+
+.submit-btn:hover {
+    background-color: #003d82;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 86, 179, 0.3);
+}
+
+/* --- Links & Disclaimer --- */
+.form-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    font-size: 0.95em;
+    animation: fadeInUp 0.8s ease 0.6s both;
+    margin-top: 20px;
+}
+
+.form-links a {
+    color: #0056b3; /* Màu xanh */
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.register-link {
+    font-weight: 600;
+    color: #0056b3; /* Màu xanh */
+    padding-bottom: 2px;
+    position: relative;
+}
+
+.register-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #0056b3;
+    transition: width 0.3s ease;
+}
+
+.register-link:hover::after {
+    width: 100%;
+}
+
+.disclaimer {
+    font-size: 0.8em;
+    color: #888;
+    line-height: 1.5;
+    margin-top: auto;
+    animation: fadeInUp 0.8s ease 0.8s both;
+}
+
+.disclaimer a {
+    color: #666;
+    border-bottom: 1px dotted #666;
+    transition: all 0.3s ease;
+}
+
+.disclaimer a:hover {
+    color: #0056b3;
+    border-bottom: 1px solid #0056b3;
+}
+
+/* --- Animations --- */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 0.8s ease forwards;
+}
+
+/* --- Responsive --- */
+@media (max-width: 992px) {
+    .login-container {
+        max-width: 800px;
+    }
+    
+    .form-column {
+        padding: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .login-container {
+        flex-direction: column-reverse;
+        max-width: 500px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .illustration-column {
+        height: 200px;
+        padding: 20px;
+    }
+
+    .form-column {
+        padding: 30px;
+    }
+
+    .welcome-message {
+        font-size: 1.5rem;
+        margin-bottom: 25px;
+    }
+    
+    .site-title {
+        font-size: 1.3rem;
+    }
+    
+    .form-description, .info-text {
+        font-size: 0.95rem;
+    }
+    
+    .welcome-message {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .login-container {
+        margin: 15px;
+    }
+    
+    .form-column {
+        padding: 25px 20px;
+    }
+    
+    .tab-button {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .form-links {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+    
+    .submit-btn {
+        padding: 12px;
+    }
+    
+    .form-description {
+        margin-bottom: 20px;
+    }
+    
+    .info-text {
+        margin-bottom: 20px;
+    }
+    
+    .back-to-login {
+        justify-content: center;
+        width: 100%;
+        padding: 10px 0;
+    }
+    
+    .form-group input[type="email"] {
+        height: 45px;
+    }
+}
+/* --- Thêm style cho Text mô tả và thông tin --- */
+
+.form-description {
+    font-size: 1rem; /* Cỡ chữ cho mô tả */
+    color: #555;
+    margin-bottom: 25px; /* Khoảng cách với form */
+    line-height: 1.5;
+    animation: fadeInUp 0.5s ease 0.3s both;
+}
+
+.info-text {
+    font-size: 0.9rem; /* Cỡ chữ nhỏ hơn cho text thông tin */
+    color: #777;      /* Màu xám nhạt */
+    margin-top: 5px; /* Kéo lên gần ô input hơn */
+    margin-bottom: 25px; /* Khoảng cách với nút Tiếp tục */
+    line-height: 1.5;
+    animation: fadeInUp 0.5s ease 0.5s both;
+}
+
+/* --- Điều chỉnh nếu cần --- */
+
+/* CSS cho .tab-button, .form-group, input, .submit-btn, .login-container, etc.
+   được kế thừa từ file style-login.css và giữ nguyên */
+
+/* Nếu bạn thêm tiêu đề trang bên ngoài container */
+/*
+.page-heading {
+    text-align: center;
+    color: #aaa;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-size: 1em;
+}
+*/
+
+/* Đảm bảo icon mới hiển thị đúng */
+/* Ví dụ: */
+/*
+.tab-button .icon {
+    content: url('icon-forgot.png');
+}
+*/
+
+/* CSS bổ sung cho trang quên mật khẩu */
+
+/* Hiệu chỉnh màu chữ và icon cho trang quên mật khẩu */
+.site-title {
+    color: #0056b3;
+}
+
+.site-title:after {
+    background-color: #0056b3;
+}
+
+.tab-button {
+    color: #0056b3;
+    background-color: #f0f7ff;
+}
+
+.tab-button i {
+    color: #0056b3;
+}
+
+.input-with-icon i {
+    color: #0056b3;
+}
+
+/* Hiệu chỉnh form description */
+.form-description {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 25px;
+    line-height: 1.5;
+    animation: fadeInUp 0.5s ease 0.3s both;
+}
+
+.info-text {
+    font-size: 0.9rem;
+    color: #777;
+    margin-top: 5px;
+    margin-bottom: 25px;
+    line-height: 1.5;
+    animation: fadeInUp 0.5s ease 0.5s both;
+}
+
+/* Điều chỉnh kích thước ô nhập liệu giống với trang đăng ký */
+.form-group input[type="email"] {
+    width: 100%;
+    padding: 14px 40px 14px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #fff;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+    height: 50px; /* Chiều cao lớn hơn */
+}
+
+.form-group input[type="email"]:focus {
+    border-color: #0056b3;
+    box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
+}
+
+.input-with-icon {
+    position: relative;
+    margin-bottom: 5px; /* Thêm khoảng cách với phần text bên dưới */
+}
+
+.input-with-icon i {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #0056b3;
+    font-size: 1.2rem; /* Icon lớn hơn một chút */
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.input-with-icon input:focus + i {
+    opacity: 1;
+}
+
+/* Nút quay lại đăng nhập */
+.back-to-login {
+    display: flex;
+    align-items: center;
+    color: #0056b3;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.back-to-login i {
+    margin-right: 8px;
+    font-size: 0.9rem;
+}
+
+.back-to-login:hover {
+    color: #003d82;
+    transform: translateX(-3px);
+}
+
+/* Link hỗ trợ */
+.contact-support {
+    color: #0056b3;
+    text-decoration: underline;
+    transition: all 0.3s ease;
+}
+
+.contact-support:hover {
+    color: #003d82;
+}
+
+/* Hiệu ứng hình ảnh */
+.illustration-column {
+    background-color: #f0f7ff;
+}
+
+.illustration-column img {
+    max-width: 90%;
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Animation cho form fields */
+form .form-group {
+    animation: fadeInUp 0.5s ease 0.4s both;
+}
+
+form .submit-btn {
+    animation: fadeInUp 0.5s ease 0.6s both;
+    height: 50px; /* Nút cao hơn để nhất quán */
+    font-size: 1.05rem; /* Font lớn hơn cho nút */
+}
+
+.form-links {
+    animation: fadeInUp 0.5s ease 0.7s both;
+    margin-top: 20px; /* Thêm khoảng cách với form */
+}
+
+.disclaimer {
+    animation: fadeInUp 0.5s ease 0.8s both;
+}
+
+/* Hiệu ứng nút submit */
+.submit-btn {
+    background-color: #0056b3;
+    box-shadow: 0 4px 6px rgba(0, 86, 179, 0.2);
+}
+
+.submit-btn:hover {
+    background-color: #003d82;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 86, 179, 0.3);
+}
+
+/* Form group có thêm khoảng cách */
+.form-group {
+    margin-bottom: 28px; /* Thêm khoảng cách giữa các phần tử form */
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .form-description, .info-text {
+        font-size: 0.95rem;
+    }
+    
+    .welcome-message {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .form-description {
+        margin-bottom: 20px;
+    }
+    
+    .info-text {
+        margin-bottom: 20px;
+    }
+    
+    .back-to-login {
+        justify-content: center;
+        width: 100%;
+        padding: 10px 0;
+    }
+    
+    .form-group input[type="email"] {
+        height: 45px; /* Nhỏ hơn một chút trên mobile */
+    }
+}
